@@ -1,0 +1,3 @@
+*.ged
+*.csv
+.ipynb_checkpoints*
