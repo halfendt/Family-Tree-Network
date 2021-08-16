@@ -71,12 +71,12 @@ def main():
             Ye3d.extend([layout[e[0]][1], layout[e[1]][1], None])
             Ze3d.extend([layout[e[0]][2], layout[e[1]][2], None])
         trace1 = go.Scatter3d(x=Xe3d, y=Ye3d, z=Ze3d, mode='lines', line=dict(color='rgb(0,0,0)', width=1), hoverinfo='none')
-        display_text = df_indi['name'] if opt.name else df_indi.index.astype(str)
+        display_text = df_indi['name'] if opt.name else '#'+df_indi.index.astype(str)
         trace2 = go.Scatter3d(x=Xn3d, y=Yn3d, z=Zn3d, mode='markers', name='people',
                               marker=dict(symbol='circle', size=6, colorscale='plasma', 
                                           color=np.sqrt(np.array(Xn3d)**2 + np.array(Yn3d)**2 + np.array(Zn3d)**2),
                                           line=dict(color='rgb(50,50,50)', width=0.5)),
-                              text=display_text + ' ' + df_indi['birth_date'].astype(str) + '-' + df_indi['death_date'].astype(str),
+                              text=display_text + ': ' + df_indi['birth_date'].astype(str) + '-' + df_indi['death_date'].astype(str),
                               hoverinfo='text')
     else:
         layout = g.layout('fr')  # 2D
@@ -87,12 +87,12 @@ def main():
             Xe.extend([layout[e[0]][0], layout[e[1]][0], None])
             Ye.extend([layout[e[0]][1], layout[e[1]][1], None])
         trace1 = go.Scatter(x=Xe, y=Ye, mode='lines', line=dict(color='rgb(0,0,0)', width=1), hoverinfo='none')
-        display_text = df_indi['name'] if opt.name else df_indi.index.astype(str)
+        display_text = df_indi['name'] if opt.name else '#'+df_indi.index.astype(str)
         trace2 = go.Scatter(x=Xn, y=Yn, mode='markers', name='people',
                             marker=dict(symbol='circle', size=6, colorscale='plasma', 
                                         color=np.sqrt(np.array(Xn)**2 + np.array(Yn)**2),
                                         line=dict(color='rgb(50,50,50)', width=0.5)),
-                            text=display_text + ' ' + df_indi['birth_date'].astype(str) + '-' + df_indi['death_date'].astype(str),
+                            text=display_text + ': ' + df_indi['birth_date'].astype(str) + '-' + df_indi['death_date'].astype(str),
                             hoverinfo='text')
     
     # Setup graph layout and axes
